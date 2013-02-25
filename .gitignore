@@ -1,0 +1,7 @@
+stack
+R/.Rhistory
+R/.RData
+js/d3*.js
+presentation.html
+*.Rout
+figs/intercross.png

@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<style>
+@import url(css/stack.css);
+@import url(css/kbroman_talk.css);
+@import url(css/sperm.css);
+/* comment following line to get rid of notes; uncommented to show notes */
+/* @import url(css/kbroman_presentation.css); */
+</style>
+
+<script src="http://d3js.org/d3.v3.js"></script>
+<script src="js/plotframe.js"></script>
+
+<title>Interactive graphics for high-dimensional genetic data</title>
+</head>
+<body class="overview">
+
+
+
+
+
+<section class="titlepage">
+<h2 class="highlight"><font id="flash" class="glow">Interactive</font> graphics for<br> high-dimensional genetic data</h2>
+
+<h4><a href="http://www.biostat.wisc.edu/~kbroman">Karl Broman</a></h4>
+<p class="nopadding">Biostatistics &amp; Medical Informatics, University of Wisconsin
+&ndash; Madison</p>
+
+<p class="nopadding"><code><a href="http://www.biostat.wisc.edu/~kbroman"
+class="gray">http://www.biostat.wisc.edu/~kbroman</a></code></p>
+
+<script type="text/javascript">
+var flashText = d3.select("body").select("#flash");
+
+var flashToggle = 0; // when flashing, keeps track of on/off
+var stateToggle = 0; // goes between 0 (off), 1 (on) and 2 (flashing)
+
+var flashFunc =
+      function() {
+        flashText.attr("class", function() {
+          if(flashToggle==5) {
+            flashToggle=-1;
+            return("highlight"); }
+          else return("glow"); });
+
+        flashToggle++;
+      };
+
+var flashInterval = setInterval(flashFunc, 400);
+
+flashText.on("click", function() {
+    if(stateToggle==0) {
+      clearInterval(flashInterval);
+      d3.select(this).attr("class", "highlight");
+    }
+    else if(stateToggle==1) {
+      d3.select(this).attr("class", "glow");
+    }
+    else {
+      d3.select(this).attr("class", "highlight");
+      flashToggle = 0;
+      flashInterval = setInterval(flashFunc, 400);
+    }
+    stateToggle++;
+    if(stateToggle > 2) stateToggle = 0;
+});
+</script>
+
+<aside>If you click on the word &rdquo;interactive&ldquo;, it will switch among
+off/on/flashing.</aside>
+
+</section>
+
+
+
+
+
+<section>
+
+<h3>Inbred mice</h3>
+
+<img style="position:fixed;bottom: 0px; left:0px; z-index: -1;" width="1280px" src="figs/inbredmice.jpg" />
+
+<aside>I think these are SWR mice; the photo is from <a href="http://cals.ncsu.edu/genetics/index.php/people/david-threadgill/">David Threadgill</a>.</aside>
+
+<p class="pg">2</p></section>
+
+
+
+
+
+
+<section>
+
+<h3>Human vs mouse</h3>
+
+<img style="position:fixed;top: 300px; left:120px; z-index: -1;" height="500px" src="figs/da-vinci-man.jpg" />
+
+<img style="position:fixed;top: 300px; right:120px; z-index: -1;" height="500px" src="figs/vitruvian_mouse.jpg" />
+
+<aside>The figure on the right is from <a href="http://www.daviddeen.com">David Deen</a>.</aside>
+
+
+<p class="pg">3</p></section>
+
+
+
+
+
+<section>
+
+<h3>Intercross</h3>
+
+<img style="position:fixed;bottom: 80px; left:50px; z-index: -1;" src="figs/intercross.png" />
+
+<aside>The most common type of experimental cross.</aside>
+
+<p class="pg">4</p></section>
+
+
+
+<section>
+
+<h3>eQTL project</h3>
+
+
+
+
+<aside>Attie project...</aside>
+
+<p class="pg">5</p></section>
+
+
+
+
+
+
+
+<section>
+<h3>Many box plots</h3>
+
+
+<div align="center">
+<img src="figs/manyboxplots.png">
+</div>
+
+<aside>This is sort of like 500 boxplots; the data concern 500
+microarrays, sorted by the median expression, with the lines
+connecting the 1, 5, 10, 25, 50, 75, 90, 95, and 99%iles.  Wouldn't it
+be nice to click on an array and see the corresponding histogram?</aside>
+
+
+<p class="pg">?</p></section>
+
+
+
+<section>
+<h3>Opportunities</h3>
+
+<ul class=small>
+  <li><font class="highlight">Exploration</font>
+       <ul>
+         <li>Tuning parameters
+         <li>Identifying outliers
+         <li>One fancy plot vs 1000 static plots
+       </ul>
+
+  <li><font class="highlight">Reports for collaborators</font>
+       <ul>
+         <li>Living documents!
+         <li>Allow deeper exploration of the results
+         <li>Cut down on questions?
+       </ul>
+
+  <li><font class="glow">Big Data</font>
+       <ul>
+         <li>Don&rsquo;t just rely on summary statistics
+         <li>Greatly compressed information, but with access to the details
+         <li>Zoom into dense figures
+         <li>More exploration, more connections
+       </ul>
+
+</ul>
+
+<aside>The routine use of interactive graphics for exploratory data
+analysis seems a bit out of reach, but surely is possible.
+Incorporating such graphics in reports to our collaborators could be
+really valueable, but perhaps the greatest opportunity is for the
+exploration of large, complex data sets.</aside>
+
+<p class="pg">?</p></section>
+
+
+
+<section>
+<h3>Barriers</h3>
+
+<ul class=small style="margin-right:100px;">
+  <li><font class="lowlight">We never learned how</font>
+  <li><font class="lowlight">It&rsquo;s a hassle</font>
+  <li><font class="lowlight">No consistent platform</font>
+  <li><font class="lowlight">Journal articles are static</font> <font
+  class="small">(and what else matters?)</font>
+  <li><font class="lowlight">Most statisticians are still creating terrible static plots</font>
+       <font class="small">(even worse, obnoxious tables)</font>
+</ul>
+
+<aside>Why aren&rsquo;t statisticians making interactive graphs?  Primarily
+because we&rsquo;ve not learned how.  And it does remain somewhat difficult,
+and there are too many options, most of them incompletely developed.
+But I think the primary reason is that journal articles are static, so
+what incentive is there to develop interactive graphics tools?  And
+most statisticians are still putting little care into visualizations,
+at all.  </aside>
+
+<p class="pg">?</p></section>
+
+<section>
+<h3>Barriers</h3>
+
+<ul class=small style="margin-right:100px;">
+  <li><font class="lowlight">We never learned how</font>
+  <li><font class="lowlight">It&rsquo;s a hassle</font>
+  <li><font class="lowlight">No consistent platform</font>
+  <li><font class="lowlight">Journal articles are static</font> <font
+  class="small">(and what else matters?)</font>
+  <li><font class="lowlight">Most statisticians are still creating <font class="glow">terrible</font> static plots</font>
+       <font class="small">(even worse, <font class="glow">obnoxious</font> tables)</font>
+</ul>
+
+<aside>I mean it!  Lots of statisticians just create crappy tables,
+because they&rsquo;re lazy and don&rsquo;t care.</aside>
+
+<p class="pg">?</p></section>
+
+
+
+<section>
+<h3>Trade-offs</h3>
+
+<p align="center" style="margin-top:200px;font-size: 48px;"> <a href="http://code.google.com/p/google-motion-charts-with-r/">Easy</a> <font
+  class="gray">or <a href="http://d3js.org" class="highlight">flexible</a>?</font>
+
+
+<aside>You have to choose between easy or flexible; you can&rsquo;t have
+  both.  I&rsquo;m going for flexible.</aside>
+
+<p class="pg">?</p></section>
+
+
+
+<section class="nopadding">
+
+<div id="sperm" class="sperm" style="position:fixed;top:0px;left:0px;width:1280px;height:960px;">
+</div>
+
+<div style="position:fixed;bottom:1px;left:1px;">
+<code style="font-size:36px;"><a href="http://bl.ocks.org/1136236">http://bl.ocks.org/1136236</a></code></div>
+
+<aside>This is one of the images that convinced me that I want to
+  learn D3.  The code is surprisingly short and easy to follow.</aside>
+
+<p class="pg">16</p>
+</section>
+
+
+<section>
+<h3>A lot to learn</h3>
+
+<ul class="small">
+  <li><a href="https://developer.mozilla.org/en-US/docs/HTML/HTML5">HTML</a> and &ldquo;<a href="http://en.wikipedia.org/wiki/Document_Object_Model">The DOM</a>&rdquo;
+  <li><a href="https://developer.mozilla.org/en-US/docs/CSS">CSS</a>
+  <li><a href="https://developer.mozilla.org/en-US/docs/SVG">SVG</a>
+  <li><a href="http://caniuse.com">Differences among web browsers</a>
+  <li><a href="https://developer.mozilla.org/en-US/docs/JavaScript">JavaScript</a> / 
+      <a href="http://coffeescript.org">CoffeeScript</a>
+  <li><a href="http://d3js.org">D3</a>
+</ul>
+
+<aside>The hardest part about learning D3 is that there are a whole pile of things that you need to understand simultaneously, and some of them are rather dull.
+There are lots of helpful examples at the <a href="https://github.com/mbostock/d3/wiki/Gallery">D3 gallery</a>.
+</aside>
+
+<p class="pg">?</p></section>
+</section>
+
+
+
+
+
+<section>
+<h3>Acknowledgments</h3>
+
+<div style="margin-left:120px">
+  <p><a href="http://d3js.org" class="highlight">D3</a> and <a href="https://github.com/mbostock/stack" class="highlight">stack.js</a> by <a href="http://bost.ocks.org/mike" rel="author">Mike Bostock</a>
+
+  <p><a href="http://alignedleft.com/tutorials/d3"
+  class="highlight">D3 tutorials</a> by <a href="http://alignedleft.com">Scott Murray</a>
+
+  <p><a href="http://coffeescript.org" class="highlight">CoffeeScript</a> by <a
+  href="https://github.com/jashkenas">Jeremy Ashkenas</a>
+
+  <p><a href="http://eloquentjavascript.net"
+  class="highlight"><i>Eloquent JavaScript</i></a> by <a href="http://marijnhaverbeke.nl">Marijn Haverbeke</a>
+
+  <p><a href="http://pragprog.com/book/tbcoffee/coffeescript"
+  class="highlight"><i>CoffeeScript</i> book</a> by <a href="http://trevorburnham.com">Trevor Burnham</a>
+</div>
+
+<aside>The first two plots (density with slider and scatterplot with
+hovering info) were produced with the <a href="http://d3js.org">D3</a>
+library (written in
+JavaScript); I wrote the code in CoffeeScript, which compiles to
+JavaScript but is a better-designed language.  <a
+href="http://eloquentjavascript.net"><i>Eloquent JavaScript</i></a> is a
+great free book; <a
+href="http://pragprog.com/book/tbcoffee/coffeescript"><i>CoffeeScript</i></a>
+is not free but is a great book; you need to learn at least a bit of
+JavaScript first.  <a href="http://alignedleft.com/tutorials/d3">Scott
+Murray's D3 tutorials</a> are superb and are a great place to start
+for learning D3.
+These slides are in html, using <a
+href="https://github.com/mbostock/stack">stack.js</a>.</aside>
+
+<!--<p class="reference"><a class="invisiblelink" href="extra/index.html">extra</a></p> -->
+
+<p class="pg">19</p></section>
+
+<script src="js/sperm.js"></script>
+<script src="js/stack.v0.js"></script>
+</body>
+</html>
