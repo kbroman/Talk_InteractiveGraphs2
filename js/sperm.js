@@ -25,7 +25,7 @@ var svg = d3.select("div#sperm").append("svg")
 
 var g = svg.selectAll("g")
     .data(spermatozoa)
-  .enter().append("svg:g").attr("opacity", 0);
+  .enter().append("svg:g").attr("opacity", 0).style("pointer-events", "none");
 
 var head = g.append("svg:ellipse")
     .attr("rx", 6.5)
