@@ -16,5 +16,8 @@ while($line = <IN>) {
         $line =~ s/\<\!\-\-//;
         $line =~ s/\-\-\>//;
     }
+    if($line =~ /Remove stickies/) {
+        $line = "<!-- $line -->";
+    }
     print OUT "$line\n";
 }
