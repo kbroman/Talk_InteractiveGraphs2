@@ -1,4 +1,4 @@
-mainstuff: js presentation.html figs/manyboxplots.png
+mainstuff: js presentation.html figs/manyboxplots.png figs/manyboxplots_oldschool.png
 
 js: js/manyboxplots.js
 
@@ -7,6 +7,9 @@ js/manyboxplots.js: coffee/manyboxplots.coffee
 
 figs/manyboxplots.png: R/hypo_boxplot.R
 	cd R;R CMD BATCH hypo_boxplot.R
+
+figs/manyboxplots_oldschool.png: R/hypo_boxplot_oldschool.R
+	cd R;R CMD BATCH hypo_boxplot_oldschool.R
 
 presentation.html: index.html js css/kbroman_talk.css css/kbroman_presentation.css
 	Perl/create_presentation.pl
