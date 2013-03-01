@@ -3,6 +3,7 @@ draw = (data) ->
 
   bgcolor = "black"
   labelcolor = "white"
+  lightgray = d3.rgb(200, 200, 200)
 
   # dimensions of SVG
   w = 1000
@@ -57,7 +58,7 @@ draw = (data) ->
      .attr("height", h-pad.top-pad.bottom)
      .attr("width", w-pad.left)
      .attr("stroke", "none")
-     .attr("fill", d3.rgb(200, 200, 200))
+     .attr("fill", lightgray)
 
   # axis on left
   LaxisData = [-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1]
@@ -190,12 +191,20 @@ draw = (data) ->
      .attr("stroke", "none")
      .attr("fill", bgcolor)
 
-  # box around the outside
+  # boxes around the outside
   svg.append("rect")
      .attr("x", pad.left)
      .attr("y", pad.top)
      .attr("height", h-pad.top-pad.bottom)
      .attr("width", w-pad.left-pad.right)
+     .attr("stroke", "black")
+     .attr("stroke-width", 2)
+     .attr("fill", "none")
+  svg.append("rect")
+     .attr("x", w-pad.right)
+     .attr("y", pad.top)
+     .attr("height", h-pad.top-pad.bottom)
+     .attr("width", pad.right)
      .attr("stroke", "black")
      .attr("stroke-width", 2)
      .attr("fill", "none")
@@ -228,7 +237,7 @@ draw = (data) ->
      .attr("height", h-pad.top-pad.bottom)
      .attr("width", w-pad.left-pad.right)
      .attr("stroke", "none")
-     .attr("fill", d3.rgb(200, 200, 200))
+     .attr("fill", lightgray)
 
   # axis on left
   lowBaxisData = [-1, -0.5, 0, 0.5, 1, 1.5, 2]
