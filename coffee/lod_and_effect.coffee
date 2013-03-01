@@ -2,10 +2,10 @@
 draw = (data) ->
 
   # dimensions of SVG
-  w = 1200
+  w = 1000
   h = 300
-  botLw = 600
-  pad = {left:60, top:40, right:40, bottom: 40}
+  botLw = 500
+  pad = {left:60, top:30, right:40, bottom: 40}
   innerPad = 4
   wInner = []
   wInner[0] = w - pad.left - pad.right
@@ -13,6 +13,10 @@ draw = (data) ->
   for i in [0..3]
     hInner[i] = h - pad.top - pad.bottom
   chrGap = 8
+
+  bigCircRad = "4"
+  medCircRad = "4"
+  smCircRad =  "2"
 
   wInner[1] = botLw - pad.left - pad.right
   botRw = (w - botLw)/2
@@ -41,8 +45,11 @@ draw = (data) ->
     jitter[i] = (2.0*Math.random()-1.0) * jitterAmount
 
   # colors definitions
-  lightGray = d3.rgb(230, 230, 230)
-  darkGray = d3.rgb(200, 200, 200)
+  bgcolor = "black"
+  labelcolor = "white"
+  titlecolor = "Wheat"
+  lightGray = d3.rgb(200, 200, 200)
+  darkGray = d3.rgb(170, 170, 170)
   pink = "#E9CFEC"
   purple = "#8C4374"
 
@@ -204,11 +211,13 @@ draw = (data) ->
                   .text((td) -> genotypes[td])
                   .attr("y", bottom[j] + pad.bottom*0.25)
                   .attr("x", (td) -> xScale[j](td))
+                  .attr("fill", labelcolor)
        XaxisGrp[j].selectAll("empty")
                   .data(aves[j-2])
                   .enter()
                   .append("text")
                   .text((td,i) -> ["Female", "Male"][i])
+                  .attr("fill", titlecolor)
                   .attr("y", bottom[j] + pad.bottom*0.75)
                   .attr("x", (td) -> td)
 
@@ -234,7 +243,7 @@ draw = (data) ->
          .attr("class", "effectplot")
          .attr("cx", (d,i) -> xScale[2](i))
          .attr("cy", (d) -> yScale[2](d))
-         .attr("r", 6)
+         .attr("r", bigCircRad)
          .attr("fill", (d,i) ->
             return "blue" if male[i]
             "red")
@@ -289,6 +298,7 @@ draw = (data) ->
                .attr("x", left[j] - pad.left*0.05)
                .attr("y", (d) -> yScale[j](d))
                .attr("class", "alignright")
+               .attr("fill", labelcolor)
 
   # y-axis titles
   ylab = ["LOD score", "LOD score", data.phenotype, data.phenotype]
@@ -298,15 +308,15 @@ draw = (data) ->
                .text(ylab[j])
                .attr("x", xpos[j])
                .attr("y", (top[j]+bottom[j])/2)
+               .attr("fill", titlecolor)
                .attr("transform", "rotate(270,#{xpos[j]},#{(top[j]+bottom[j])/2})")
-               .attr("fill", "blue")
 
   # title on top panel
   topsvg.append("text")
      .text(data.phenotype)
      .attr("x", (left[0] + right[0])/2)
      .attr("y", pad.top/2)
-     .attr("fill", "blue")
+     .attr("fill", titlecolor)
 
   # x-axis labels
   xlab = ["Chromosome", "Position (cM)"]
@@ -315,7 +325,7 @@ draw = (data) ->
                .text(xlab[j])
                .attr("x", (left[j] + right[j])/2)
                .attr("y", bottom[j] + pad.bottom*0.65)
-               .attr("fill", "blue")
+               .attr("fill", titlecolor)
 
   # lod curves by chr
   lodcurve = (j) ->
@@ -358,7 +368,7 @@ draw = (data) ->
                 return xScale[3](sx*2+g-1)+jitter[i]
               xScale[3](sx*3+g-1)+jitter[i])
           .attr("cy", (d) -> yScale[3](d))
-          .attr("r", "3")
+          .attr("r", smCircRad)
           .attr("fill", (d,i) ->
               g = data.geno[marker][i]
               return pink if g < 0
@@ -372,11 +382,11 @@ draw = (data) ->
                return "2" if g < 0
                "1")
           .on "mouseover", (d,i) ->
-               d3.select(this).attr("r", "5")
+               d3.select(this).attr("r", medCircRad)
                indtip.call(this, d, i)
           .on "mouseout", ->
                d3.selectAll("#indtip").remove()
-               d3.select(this).attr("r", "3")
+               d3.select(this).attr("r", smCircRad)
 
   # function to revise phenotype vs genotype plot
   revPXG = (chr, marker) ->
@@ -412,13 +422,13 @@ draw = (data) ->
         .attr("y", pad.top/2)
         .text("Chromosome #{randomChr}")
         .attr("id", "botLtitle")
-        .attr("fill", "blue")
+        .attr("fill", titlecolor)
   botsvg.append("text")
         .attr("x", (left[2]+right[3])/2)
         .attr("y", pad.top/2)
         .text("")
         .attr("id", "botRtitle")
-        .attr("fill", "blue")
+        .attr("fill", titlecolor)
 
   XaxisGrp[1].selectAll("empty")
               .data(xScale[1][randomChr].ticks(10))
@@ -440,6 +450,7 @@ draw = (data) ->
               .text((td) -> td)
               .attr("y", bottom[1] + pad.bottom*0.25)
               .attr("x", (td) -> xScale[1][randomChr](td))
+              .attr("fill", labelcolor)
 
   onedig = d3.format(".1f")
 
@@ -483,7 +494,7 @@ draw = (data) ->
           .attr("id", (td) -> "circle#{td}")
           .attr("cx", (td) -> xScale[1][chr](data.lod[chr].pos[data.markerindex[chr][td]]))
           .attr("cy", (td) -> yScale[1](data.lod[chr].lod[data.markerindex[chr][td]]))
-          .attr("r", 6)
+          .attr("r", bigCircRad)
           .attr("fill", purple)
           .attr("stroke", "none")
           .attr("stroke-width", "2")
@@ -575,6 +586,7 @@ draw = (data) ->
                            .text((td) -> td)
                            .attr("y", bottom[1] + pad.bottom*0.25)
                            .attr("x", (td) -> xScale[1][d](td))
+                           .attr("fill", labelcolor)
 
                markerTicks.selectAll(".markertick").remove()
                markerTicks.selectAll("empty")
@@ -602,6 +614,7 @@ draw = (data) ->
     .text((d) -> d)
     .attr("x", (d) -> Math.floor((chrPixelStart[d] + chrPixelEnd[d])/2))
     .attr("y", bottom[0] + pad.bottom*0.3)
+    .attr("fill", labelcolor)
 
   # black borders
   for j in [0..3]
