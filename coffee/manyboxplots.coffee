@@ -1,9 +1,12 @@
 # function that does all of the work
 draw = (data) ->
 
+  bgcolor = "black"
+  labelcolor = "white"
+
   # dimensions of SVG
   w = 1000
-  h = 450
+  h = 300
   pad = {left:60, top:20, right:40, bottom: 40}
 
   # adjust counts object to make proper histogram
@@ -24,7 +27,7 @@ draw = (data) ->
     data.counts[i] = fix4hist(data.counts[i])
 
   # number of quantiles
-  nQuant = data.quant.length
+  nQuant = data.qu.length
   midQuant = (nQuant+1)/2 - 1
 
   xScale = d3.scale.linear()
@@ -43,7 +46,7 @@ draw = (data) ->
         .x((d,i) -> xScale(i))
         .y((d) -> yScale(data.quant[j][d]))
 
-  svg = d3.select("body").append("svg")
+  svg = d3.select("div#manyboxplots").append("svg")
           .attr("width", w)
           .attr("height", h)
 
@@ -52,7 +55,7 @@ draw = (data) ->
      .attr("x", pad.left)
      .attr("y", pad.top)
      .attr("height", h-pad.top-pad.bottom)
-     .attr("width", w-pad.left-pad.right)
+     .attr("width", w-pad.left)
      .attr("stroke", "none")
      .attr("fill", d3.rgb(200, 200, 200))
 
@@ -84,6 +87,7 @@ draw = (data) ->
      .attr("y", (d) -> yScale(d))
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "end")
+     .attr("fill", labelcolor)
 
 
   # axis on left
@@ -114,10 +118,11 @@ draw = (data) ->
      .attr("x", (d) -> xScale(d))
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
+     .attr("fill", labelcolor)
 
 
   # curves for quantiles
-  colors = ["blue", "green", "orange", "red", "black"]
+  colors = ["black", "DarkOrchid", "DarkGreen", "Crimson", "Navy"]
   for j in [3..0]
     colors.push(colors[j])
 
@@ -162,7 +167,7 @@ draw = (data) ->
                  .attr("opacity", "0")
 
   # label quantiles on right
-  rightAxis = svg.append("g")
+  rightAxis = svg.append("g").attr("id", "rightAxis")
 
   rightAxis.selectAll("empty")
        .data(data.qu)
@@ -171,20 +176,19 @@ draw = (data) ->
        .attr("class", "qu")
        .text( (d) -> "#{d*100}%")
        .attr("x", w-pad.right*0.1)
-       .attr("y", (d,i) -> yScale((i+0.5)/nQuant - 0.5))
+       .attr("y", (d,i) -> yScale(((i+0.5)/nQuant - 0.5)*1.3))
        .attr("fill", (d,i) -> colors[i])
        .attr("text-anchor", "end")
        .attr("dominant-baseline", "middle")
 
-
-  # white box above to smother overlap
+  # black box above to smother overlap
   svg.append("rect")
      .attr("x", 0)
      .attr("y", 0)
      .attr("width", w)
      .attr("height", pad.top)
      .attr("stroke", "none")
-     .attr("fill", "white")
+     .attr("fill", bgcolor)
 
   # box around the outside
   svg.append("rect")
@@ -197,7 +201,7 @@ draw = (data) ->
      .attr("fill", "none")
 
   # lower svg
-  lowsvg = d3.select("body").append("svg")
+  lowsvg = d3.select("div#manyboxplots").append("svg")
              .attr("height", h)
              .attr("width", w)
 
@@ -256,6 +260,7 @@ draw = (data) ->
      .attr("x", (d) -> lowxScale(d))
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
+     .attr("fill", labelcolor)
 
   grp4BkgdHist = lowsvg.append("g")
 
@@ -274,7 +279,7 @@ draw = (data) ->
        .attr("stroke-width", "2")
 
 
-  histColors = ["blue", "red", "green", "orange", "black"]
+  histColors = ["Crimson", "DarkGreen", "MediumVioletRed", "Navy"]
 
   lowsvg.append("text")
         .datum(randomInd)
@@ -284,7 +289,7 @@ draw = (data) ->
         .attr("id", "histtitle")
         .attr("text-anchor", "middle")
         .attr("dominant-baseline", "middle")
-        .attr("fill", "blue")
+        .attr("fill", labelcolor)
 
   # Using https://github.com/Caged/d3-tip
   #   [slightly modified in https://github.com/kbroman/d3-tip]
@@ -332,23 +337,23 @@ draw = (data) ->
               else
                 grp4BkgdHist.select("path##{d}").remove()
 
-  # white box above to smother overlap
+  # black box above to smother overlap
   lowsvg.append("rect")
      .attr("x", 0)
      .attr("y", 0)
      .attr("width", w)
      .attr("height", pad.top)
      .attr("stroke", "none")
-     .attr("fill", "white")
+     .attr("fill", bgcolor)
 
-  # white box to left smother overlap
+  # black box to left smother overlap
   lowsvg.append("rect")
      .attr("x", 0)
      .attr("y", 0)
      .attr("width", pad.left)
      .attr("height", h)
      .attr("stroke", "none")
-     .attr("fill", "white")
+     .attr("fill", bgcolor)
 
   # box around the outside
   lowsvg.append("rect")
@@ -365,7 +370,7 @@ draw = (data) ->
      .text("Gene expression (mlratio)")
      .attr("x", pad.left*0.2)
      .attr("y", h/2)
-     .attr("fill", "blue")
+     .attr("fill", labelcolor)
      .attr("transform", "rotate(270 #{pad.left*0.2} #{h/2})")
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
@@ -374,7 +379,7 @@ draw = (data) ->
      .text("Gene expression (mlratio)")
      .attr("x", (w-pad.left-pad.bottom)/2+pad.left)
      .attr("y", h-pad.bottom*0.2)
-     .attr("fill", "blue")
+     .attr("fill", labelcolor)
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
 
@@ -382,10 +387,10 @@ draw = (data) ->
      .text("Arrays, sorted by median expression")
      .attr("x", (w-pad.left-pad.bottom)/2+pad.left)
      .attr("y", h-pad.bottom*0.2)
-     .attr("fill", "blue")
+     .attr("fill", labelcolor)
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
 
 
 # load json file and call draw function
-d3.json("hypo.json", draw)
+d3.json("data/hypo.json", draw)
