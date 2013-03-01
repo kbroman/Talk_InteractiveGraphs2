@@ -3,6 +3,7 @@ draw = (data) ->
 
   bgcolor = "black"
   labelcolor = "white"
+  titlecolor = "Wheat"
   lightGray = d3.rgb(200, 200, 200)
   darkGray = d3.rgb(170, 170, 170)
 
@@ -57,7 +58,7 @@ draw = (data) ->
      .attr("x", pad.left)
      .attr("y", pad.top)
      .attr("height", h-pad.top-pad.bottom)
-     .attr("width", w-pad.left)
+     .attr("width", w-pad.left-pad.right)
      .attr("stroke", "none")
      .attr("fill", lightGray)
 
@@ -171,6 +172,15 @@ draw = (data) ->
   # label quantiles on right
   rightAxis = svg.append("g").attr("id", "rightAxis")
 
+  # another gray rectangle for labels on right
+  rightAxis.append("rect")
+     .attr("x", w-pad.right*0.9)
+     .attr("y", yScale(0.7))
+     .attr("height", yScale(-0.7) - yScale(0.7))
+     .attr("width", pad.right*0.9)
+     .attr("stroke", "none")
+     .attr("fill", lightGray)
+
   rightAxis.selectAll("empty")
        .data(data.qu)
        .enter()
@@ -192,20 +202,12 @@ draw = (data) ->
      .attr("stroke", "none")
      .attr("fill", bgcolor)
 
-  # boxes around the outside
+  # box around the outside
   svg.append("rect")
      .attr("x", pad.left)
      .attr("y", pad.top)
      .attr("height", h-pad.top-pad.bottom)
      .attr("width", w-pad.left-pad.right)
-     .attr("stroke", "black")
-     .attr("stroke-width", 2)
-     .attr("fill", "none")
-  svg.append("rect")
-     .attr("x", w-pad.right)
-     .attr("y", pad.top)
-     .attr("height", h-pad.top-pad.bottom)
-     .attr("width", pad.right)
      .attr("stroke", "black")
      .attr("stroke-width", 2)
      .attr("fill", "none")
@@ -377,19 +379,19 @@ draw = (data) ->
 
 
   svg.append("text")
-     .text("Gene expression (mlratio)")
+     .text("Gene expression")
      .attr("x", pad.left*0.2)
      .attr("y", h/2)
-     .attr("fill", labelcolor)
+     .attr("fill", titlecolor)
      .attr("transform", "rotate(270 #{pad.left*0.2} #{h/2})")
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
 
   lowsvg.append("text")
-     .text("Gene expression (mlratio)")
+     .text("Gene expression")
      .attr("x", (w-pad.left-pad.bottom)/2+pad.left)
      .attr("y", h-pad.bottom*0.2)
-     .attr("fill", labelcolor)
+     .attr("fill", titlecolor)
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
 
@@ -397,7 +399,7 @@ draw = (data) ->
      .text("Arrays, sorted by median expression")
      .attr("x", (w-pad.left-pad.bottom)/2+pad.left)
      .attr("y", h-pad.bottom*0.2)
-     .attr("fill", labelcolor)
+     .attr("fill", titlecolor)
      .attr("dominant-baseline", "middle")
      .attr("text-anchor", "middle")
 
