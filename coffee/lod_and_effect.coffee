@@ -3,7 +3,7 @@ draw = (data) ->
 
   # dimensions of SVG
   w = 1200
-  h = 450
+  h = 300
   botLw = 600
   pad = {left:60, top:40, right:40, bottom: 40}
   innerPad = 4
@@ -47,10 +47,10 @@ draw = (data) ->
   purple = "#8C4374"
 
   # create SVGs
-  topsvg = d3.select("body").append("svg")
+  topsvg = d3.select("div#lod_and_effect").append("svg")
           .attr("width", w)
           .attr("height", h)
-  botsvg = d3.select("body").append("svg")
+  botsvg = d3.select("div#lod_and_effect").append("svg")
           .attr("width", w)
           .attr("height", h)
   svgs = [topsvg, botsvg, botsvg, botsvg]
@@ -613,4 +613,4 @@ draw = (data) ->
            .attr("class", "outerBox")
 
 # load json file and call draw function
-d3.json("insulinlod.json", draw)
+d3.json("data/insulinlod.json", draw)

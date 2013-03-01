@@ -6,6 +6,7 @@ presentation.html
 *.Rout
 figs/intercross.png
 js/manyboxplots.js
+js/lod_and_effect.js
 figs/manyboxplots.png
 figs/manyboxplots_oldschool.png
 figs/manyboxplots_oldschoolB.png
