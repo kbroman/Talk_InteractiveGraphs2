@@ -1,6 +1,6 @@
 /* modified versions of stack.css */
 .stack {
-  padding: 80px 80px;
+  padding: 20px 80px;
   height: 960px;
   width: 1280px;
 }
@@ -192,6 +192,10 @@ p {
 
 .nopadding {
   padding: 0px 0px;
+}
+
+.nopadding h3 {
+  padding: 20px 80px;
 }
 
 .chart {
