@@ -3,7 +3,8 @@ draw = (data) ->
 
   bgcolor = "black"
   labelcolor = "white"
-  lightgray = d3.rgb(200, 200, 200)
+  lightGray = d3.rgb(200, 200, 200)
+  darkGray = d3.rgb(170, 170, 170)
 
   # dimensions of SVG
   w = 1000
@@ -58,10 +59,11 @@ draw = (data) ->
      .attr("height", h-pad.top-pad.bottom)
      .attr("width", w-pad.left)
      .attr("stroke", "none")
-     .attr("fill", lightgray)
+     .attr("fill", lightGray)
 
   # axis on left
   LaxisData = [-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1]
+  Baxis = svg.append("g") # <- axis on bottom
   Laxis = svg.append("g")
 
   # axis: white lines
@@ -91,9 +93,8 @@ draw = (data) ->
      .attr("fill", labelcolor)
 
 
-  # axis on left
+  # axis on bottom
   BaxisData = [50, 100, 150, 200, 250, 300, 350, 400, 450]
-  Baxis = svg.append("g")
 
   # axis: white lines
   Baxis.append("g").selectAll("empty")
@@ -106,7 +107,7 @@ draw = (data) ->
      .attr("y2", h-pad.bottom)
      .attr("x1", (d) -> xScale(d))
      .attr("x2", (d) -> xScale(d))
-     .attr("stroke", "white")
+     .attr("stroke", darkGray)
 
   # axis: labels
   Baxis.append("g").selectAll("empty")
@@ -237,7 +238,7 @@ draw = (data) ->
      .attr("height", h-pad.top-pad.bottom)
      .attr("width", w-pad.left-pad.right)
      .attr("stroke", "none")
-     .attr("fill", lightgray)
+     .attr("fill", lightGray)
 
   # axis on left
   lowBaxisData = [-1, -0.5, 0, 0.5, 1, 1.5, 2]
@@ -255,7 +256,7 @@ draw = (data) ->
      .attr("x1", (d) -> lowxScale(d))
      .attr("x2", (d) -> lowxScale(d))
      .attr("stroke", (d) ->
-           return "white" if d != 0
+           return darkGray if d != 0
            "rgb(255,220,255)")
 
   # axis: labels
