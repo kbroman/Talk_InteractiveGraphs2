@@ -1,38 +1,32 @@
-mainstuff: js presentation.html examples/manyboxplots.png
+mainstuff: js presentation.html figs/manyboxplots.png
 
-js: js/plotframe.js js/scatterplot.js js/density.js
+js: js/manyboxplots.js
 
-js/plotframe.js: coffee/plotframe.coffee
+js/manyboxplots.js: coffee/manyboxplots.coffee
 	coffee -bco js coffee
 
-js/scatterplot.js: coffee/scatterplot.coffee
-	coffee -bco js coffee
-
-js/density.js: coffee/density.coffee
-	coffee -bco js coffee
-
-examples/manyboxplots.png: R/hypo_boxplot.R
+figs/manyboxplots.png: R/hypo_boxplot.R
 	cd R;R CMD BATCH hypo_boxplot.R
 
 presentation.html: index.html js css/kbroman_talk.css css/kbroman_presentation.css
 	Perl/create_presentation.pl
 
 webmain:
-	scp index.html presentation.html adhara:public_html/presentations/DynamicGraphs/
+	scp index.html presentation.html adhara:public_html/presentations/InteractiveGraphs2/
 
 webcss:
-	scp css/*.css adhara:public_html/presentations/DynamicGraphs/css/
+	scp css/*.css adhara:public_html/presentations/InteractiveGraphs2/css/
 
 webcode:
-	scp js/*.js adhara:public_html/presentations/DynamicGraphs/js/
-	scp coffee/*.coffee adhara:public_html/presentations/DynamicGraphs/coffee/
+	scp js/*.js adhara:public_html/presentations/InteractiveGraphs2/js/
+	scp coffee/*.coffee adhara:public_html/presentations/InteractiveGraphs2/coffee/
 
 webdata:
-	scp data/*.json adhara:public_html/presentations/DynamicGraphs/data/
+	scp data/*.json adhara:public_html/presentations/InteractiveGraphs2/data/
 
 webex:
-	scp examples/*.png adhara:public_html/presentations/DynamicGraphs/examples/
-	scp examples/*.html adhara:public_html/presentations/DynamicGraphs/examples/
+	scp examples/*.png adhara:public_html/presentations/InteractiveGraphs2/examples/
+	scp examples/*.html adhara:public_html/presentations/InteractiveGraphs2/examples/
 
 web: webmain webcss webcode webex webdata
 

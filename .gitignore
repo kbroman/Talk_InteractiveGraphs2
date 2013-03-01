@@ -5,3 +5,4 @@ js/d3*.js
 presentation.html
 *.Rout
 figs/intercross.png
+js/manyboxplots.js

@@ -231,3 +231,32 @@ p.Rreference {
   font-size: 28px;
 }
 
+/* many box plots */
+div#manyboxplots svg {
+  margin-top:  10px;
+  margin-left: 50px;
+}
+
+div#manyboxplots .line {
+  stroke-width: 1;
+  fill: none;
+}
+
+div#manyboxplots text {
+ font-family: sans-serif;
+ font-size: 11pt;
+}
+
+/* d3-tip */
+.d3-tip {
+  fill: darkslateblue;
+  stroke: none;
+  font-weight: bold;
+}
+
+.d3-tip text {
+  fill: white;
+  font-size: 12px;
+  stroke: none;
+  font-family: sans-serif;
+}
