@@ -138,14 +138,12 @@ code.small {
 .axis path,
 .axis line {
    fill: none;
-   stroke: #fff;
    shape-rendering: crispEdges;
  }
 
 .axis text {
   font-family: sans-serif;
   font-size: 22px;
-  fill: #fff;
 }
 
 
