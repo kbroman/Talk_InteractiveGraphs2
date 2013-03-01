@@ -122,7 +122,7 @@ draw = (data) ->
 
 
   # curves for quantiles
-  colors = ["black", "DarkOrchid", "DarkGreen", "Crimson", "Navy"]
+  colors = ["black", "DarkGreen", "DarkOrchid", "Crimson", "Navy"]
   for j in [3..0]
     colors.push(colors[j])
 
