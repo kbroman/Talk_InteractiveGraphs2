@@ -3,6 +3,7 @@
   padding: 20px 80px;
   height: 960px;
   width: 1280px;
+  background: #000;
 }
 
 .titlepage {
@@ -12,6 +13,7 @@
 body {
   height: 960px;
   width: 1280px;
+  background: #000;
 }
 
 
@@ -302,4 +304,44 @@ div#lod_and_effect .axis {
   font-size: 12px;
   stroke: none;
   font-family: sans-serif;
+}
+
+
+/* aside (sticky notes) */
+
+section aside {
+  background: #FFF8B8;
+  background-image: -webkit-linear-gradient(top, #FFF8B8, #FEED77);
+  box-shadow: 0 8px 16px rgba(0,0,0,.5);
+  color: #000;
+  display: block;
+  font-size: 16px;
+  padding: 16px;
+  position: absolute;
+  right: 40px;
+  bottom: 120px;
+  width: 328px;
+  -o-transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg);
+  -moz-transform: rotate(-1deg);
+  -webkit-transform: rotate(-1deg);
+  -o-transition: opacity 100ms linear;
+  -ms-transition: opacity 100ms linear;
+  -moz-transition: opacity 100ms linear;
+  -webkit-transition: opacity 100ms linear;
+}
+
+section aside p:last-child {
+  margin-bottom: 0;
+}
+
+section aside:hover {
+  opacity: .5;
+}
+
+section:nth-child(odd) aside {
+  -o-transform: rotate(1deg);
+  -ms-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -webkit-transform: rotate(1deg);
 }
