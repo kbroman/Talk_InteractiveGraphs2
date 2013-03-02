@@ -6,7 +6,7 @@ var stack = (function() {
       body = document.body,
       root = document.documentElement,
       timeout,
-      duration = 0, // changed by Karl
+      duration = 0,
       ease = "cubic-in-out",
       screenY,
       size,
