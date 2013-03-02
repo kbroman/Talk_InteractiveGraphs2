@@ -36,4 +36,7 @@ webfigs:
 
 web: webmain webcss webcode webfigs webdata
 
-all: js web presentation.html
+tar: mainstuff
+	cd ..;tar czvf InteractiveGraphs2.tgz InteractiveGraphs2/*.html InteractiveGraphs2/css InteractiveGraphs2/coffee InteractiveGraphs2/js InteractiveGraphs2/data InteractiveGraphs2/figs;mv InteractiveGraphs2.tgz InteractiveGraphs2/
+
+all: js web presentation.html tar
