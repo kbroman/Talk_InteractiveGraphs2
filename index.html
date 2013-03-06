@@ -74,8 +74,15 @@ flashText.on("click", function() {
 
 <p class="codelink"><a href="presentation.html" class="gray">Remove stickies</a>
 
-<aside>If you click on the word &rdquo;interactive&ldquo;, it will switch among
-off/on/flashing.</aside>
+<aside>I've come to believe that data visualization can be more
+important than precise statistical inference, particularly for
+high-dimensional data.  In these slides, I will show a bit of my
+efforts to develop interactive graphics for expression genetic
+data.<br><br>
+Click on the link at the bottom-left to remove these
+notes.<br><br>
+The flashing &ldquo;interactive&rdquo; is a joke; click
+on it to switch among off/on/flashing.</aside>
 
 </section>
 
@@ -89,7 +96,13 @@ off/on/flashing.</aside>
 
 <img style="position:fixed;bottom: 0px; left:0px; z-index: -1;" width="1280px" src="figs/inbredmice.jpg" />
 
-<aside>I think these are SWR mice; the photo is from <a href="http://cals.ncsu.edu/genetics/index.php/people/david-threadgill/">David Threadgill</a>.</aside>
+<aside>I first need to provide a bit of context.  My research concerns
+genetics, and I focus particularly on mouse genetics.<br><br>
+I think these are <a
+href="http://jaxmice.jax.org/strain/000689.html">SWR mice</a>; the
+photo is from <a
+href="http://cals.ncsu.edu/genetics/index.php/people/david-threadgill/">David
+Threadgill</a>.</aside>
 
 <p class="pg">2</p></section>
 
@@ -106,7 +119,10 @@ off/on/flashing.</aside>
 
 <img style="position:fixed;top: 300px; right:120px; z-index: -1;" height="500px" src="figs/vitruvian_mouse.jpg" />
 
-<aside>The figure on the right is from <a href="http://www.daviddeen.com">David Deen</a>.</aside>
+<aside>Mice are not humans, but you can learn a great deal about human
+biology and disease from mice.<br><br>
+The figure on the right is from <a
+href="http://www.daviddeen.com">David Deen</a>.</aside>
 
 
 <p class="pg">3</p></section>
@@ -121,7 +137,12 @@ off/on/flashing.</aside>
 
 <img style="position:fixed;bottom: 80px; left:50px; z-index: -1;" src="figs/intercross.png" />
 
-<aside>The most common type of experimental cross.</aside>
+<aside>I study the genetics of complex traits in experimental crosses.
+The intercross is the most common type of experimental cross: two
+inbred strains are mated, and then their offspring are mated.  We
+measure genotypes along chromosomes and look for sites in the genome
+for which genotype is associated with some trait.
+</aside>
 
 <p class="pg">4</p></section>
 
@@ -131,10 +152,35 @@ off/on/flashing.</aside>
 
 <h3>eQTL project</h3>
 
+<p class="highlight">~500 B6 x BTBR intercross mice<font class="gray">, all knocked out for leptin</font></h4>
+
+<ul class="tight">
+  <li class="lowlight">Genotypes at 2057 SNPs (Affymetrix arrays)</li>
+  <li class="lowlight">Gene expression in six tissues (Agilent arrays)</li>
+      <ul>
+        <li>adipose</li>
+        <li>gastrocnemius muscle</li>
+        <li>hypothalamus</li>
+        <li>pancreatic islets</li>
+        <li>kidney</li>
+        <li>liver</li>
+      </ul>
+  <li class="lowlight">Numerous clinical phenotypes</li>
+      <ul><li>(e.g., body weight, insulin and glucose levels)</li></ul>
+  <li class="lowlight">Collaboration with <a href="http://www.biochem.wisc.edu/faculty/attie/">Alan Attie</a> and colleagues</li>
+
+</ul>       
 
 
 
-<aside>Attie project...</aside>
+<aside>My first adventure with big data: 500 mice x 6 arrays x 40k
+measurements.  The goal is to identify genes that contribute to
+obesity-induced diabetes.<br><br>
+With 500 arrays of 40k measurements, you would think we would be
+making many more plots than usual.  But, rather, we tend to make <font
+class="highlight">no</font> plots<br><br>
+If you can't look at all 500
+histograms, you tend not to look at any.</aside>
 
 <p class="pg">5</p></section>
 
@@ -150,10 +196,10 @@ off/on/flashing.</aside>
 <img src="figs/manyboxplots_oldschool.png">
 </div>
 
-<aside>Standard box plots don't work well with large data sets.  The
+<aside>500 boxplots, each summarizing 40k measurements.
+<br><br> Standard box plots don't work well with large data sets.  The
 usual five-number summaries don't give tail information, and it's hard
-to show <font class="highlight">many</font> boxplots.
-</aside>
+to show <font class="highlight">many</font> boxplots.</aside>
 
 
 <p class="pg">6</p></section>
@@ -170,10 +216,8 @@ to show <font class="highlight">many</font> boxplots.
 <img src="figs/manyboxplots_oldschoolB.png">
 </div>
 
-<aside>Standard box plots don't work well with large data sets.  The
-usual five-number summaries don't give tail information, and it's hard
-to show <font class="highlight">many</font> boxplots.
-</aside>
+<aside>Boxplots with large datasets are made even worse by use of
+the usual rule for depicting &ldquo;outliers.&rdquo; </aside>
 
 
 <p class="pg">6</p></section>
@@ -190,10 +234,10 @@ to show <font class="highlight">many</font> boxplots.
 <img src="figs/manyboxplots.png">
 </div>
 
-<aside>This is sort of like 500 boxplots; the data concern 500
-microarrays, sorted by the median expression, with the lines
-connecting the 1, 5, 10, 25, 50, 75, 90, 95, and 99%iles.  Wouldn't it
-be nice to click on an array and see the corresponding histogram?</aside>
+<aside>I like this better: use lines to connect various
+quantiles. (Here, the 1, 5, 10, 25, 50, 75, 90, 95, and 99%iles.)
+<br><br> Wouldn't it be nice to click on an array and see the
+corresponding histogram?</aside>
 
 
 <p class="pg">7</p></section>
@@ -208,7 +252,8 @@ be nice to click on an array and see the corresponding histogram?</aside>
 </div>
 
 <aside>Hover over an array above and see the corresponding histogram.
-Click on an array for the histogram to persist.</aside>
+Click on an array for the histogram to persist; click again to make it
+go away.<br><br>Why aren't all of our graphs interactive?</aside>
 
 
 <p class="codelink">
@@ -224,22 +269,22 @@ Click on an array for the histogram to persist.</aside>
 <section>
 <h3>Opportunities</h3>
 
-<ul class=small>
-  <li><font class="highlight">Exploration</font>
+<ul class="tight">
+  <li class="highlight">Exploration</li>
        <ul>
          <li>Tuning parameters
          <li>Identifying outliers
          <li>One fancy plot vs 1000 static plots
        </ul>
 
-  <li><font class="highlight">Reports for collaborators</font>
+  <li class="highlight">Reports for collaborators</li>
        <ul>
          <li>Living documents!
          <li>Allow deeper exploration of the results
-         <li>Cut down on questions?
+         <li>Cut down on simple questions?
        </ul>
 
-  <li><font class="glow">Big Data</font>
+  <li class="glow">Big Data</li>
        <ul>
          <li>Don&rsquo;t just rely on summary statistics
          <li>Greatly compressed information, but with access to the details
@@ -326,8 +371,11 @@ because they&rsquo;re lazy and don&rsquo;t care.</aside>
 <div style="position:fixed;bottom:10px;left:10px;">
 <code style="font-size:36px;"><a href="http://bl.ocks.org/1136236">http://bl.ocks.org/1136236</a></code></div>
 
-<aside>This is one of the images that convinced me that I want to
-  learn D3.  The code is surprisingly short and easy to follow.</aside>
+<aside>I'm focusing on using <a href="http://d3js.org">D3</a>, a javascript library for
+   data visualization.  (D3 stands for &ldquo;data-driven
+   documents.&rdquo;)<br><br> This is one of the images that convinced
+   me that I wanted to learn D3.  The code is surprisingly short and
+   easy to follow.</aside>
 
 <p class="pg">12</p>
 </section>
@@ -361,9 +409,13 @@ There are lots of helpful examples at the <a href="https://github.com/mbostock/d
 <div id="lod_and_effect" class="fig"></div>
 
 
-<aside>[Explain LOD curves.]
-Click a chromosome on the top figure to see a detailed view below left.
-Click on a marker below left to see effect estimates and raw data on the right.</aside>
+<aside>The curves at the top correspond to a measure of association
+between genotype and insulin level.  LOD scores are
+log<sub>10</sub> likelihood ratios: a transformation of the F
+statistic from ANOVA.<br><br> Click on a chromosome in the top panel to
+see a detailed view in the lower-left panel.  Click on a marker in the
+lower-left panel to see effect estimates and raw data on the
+right.</aside>
 
 
 
@@ -422,7 +474,7 @@ Click on a marker below left to see effect estimates and raw data on the right.<
 <aside>The interactive examples
 were produced with the <a href="http://d3js.org">D3</a>
 library (written in JavaScript). I wrote the code in CoffeeScript,
-which compiles to JavaScript but is a better-designed language.  <a
+which is translated to JavaScript but is a better-designed language.  <a
 href="http://eloquentjavascript.net"><i>Eloquent JavaScript</i></a> is
 a great free book.  The <a
 href="http://pragprog.com/book/tbcoffee/coffeescript"><i>CoffeeScript</i></a>

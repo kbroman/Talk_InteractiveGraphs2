@@ -66,13 +66,13 @@ ul {
 }
 
 ul.small {
-  font-size: 36px;
+  font-size: 32px;
   color: #969696;
 }
 
 ul.small ul {
   margin-left: 40px;
-  font-size: 28px;
+  font-size: 26px;
 }
 
 li {
@@ -80,16 +80,23 @@ li {
 }
 
 ul.tight {
-  font-size: 36px;
+  font-size: 32px;
   color: #969696;
 }
 
+/*
 ul.tight li {
   margin-bottom: 14px;
 }
+*/
+
+ul.tight ul {
+  margin-left: 40px;
+  font-size: 26px;
+}
 
 ul.reallytight {
-  font-size: 32px;
+  font-size: 30px;
   color: #969696;
 }
 
@@ -97,8 +104,9 @@ ul.reallytight li {
   margin-bottom: 10px;
 }
 
-li li {
-  margin-bottom: 8px;
+ul.tight ul li {
+  margin-top: -20px;
+  margin-bottom: 24px;
 }
 
 
@@ -197,6 +205,10 @@ p {
 
 .nopadding h3 {
   padding: 20px 80px;
+}
+
+h4 {
+ font-size: 38px;
 }
 
 .chart {
