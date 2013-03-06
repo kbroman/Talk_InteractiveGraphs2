@@ -34,7 +34,7 @@ webcode:
 	scp coffee/*.coffee broman-2:public_html/presentations/InteractiveGraphs2/coffee/
 
 webdata:
-	scp data/*.json broman-2:public_html/presentations/InteractiveGraphs2/data/
+	scp data/hypo.json data/insulinlod.json broman-2:public_html/presentations/InteractiveGraphs2/data/
 
 webfigs:
 	scp figs/*.png broman-2:public_html/presentations/InteractiveGraphs2/figs/
