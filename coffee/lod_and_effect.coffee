@@ -257,7 +257,7 @@ draw = (data) ->
          .attr("cy", (d) -> yScale[2](d))
          .attr("r", bigCircRad)
          .attr("fill", (d,i) ->
-            return "blue" if male[i]
+            return "darkslateblue" if male[i]
             "red")
          .attr("stroke", "black")
          .attr("stroke-width", "2")
@@ -352,7 +352,7 @@ draw = (data) ->
           .datum(data.lod[j].pos)
           .attr("d", lodcurve(j))
           .attr("class", "thickline")
-          .attr("stroke", "blue")
+          .attr("stroke", "darkslateblue")
           .style("pointer-events", "none")
 
   # detailed LOD curves below
@@ -427,7 +427,7 @@ draw = (data) ->
        .attr("d", botlodcurve(randomChr)(data.lod[randomChr].pos))
        .attr("class", "thickline")
        .attr("id", "detailedLod")
-       .attr("stroke", "blue")
+       .attr("stroke", "darkslateblue")
        .style("pointer-events", "none")
   botsvg.append("text")
         .attr("x", (left[1] + right[1])/2)
