@@ -1,7 +1,7 @@
 # function that does all of the work
 draw = (data) ->
 
-  bgcolor = "black"
+  bgcolor = d3.rgb(24, 24, 24)
   labelcolor = "white"
   titlecolor = "Wheat"
   lightGray = d3.rgb(200, 200, 200)
@@ -208,7 +208,7 @@ draw = (data) ->
      .attr("y", pad.top)
      .attr("height", h-pad.top-pad.bottom)
      .attr("width", w-pad.left-pad.right)
-     .attr("stroke", "black")
+     .attr("stroke", bgcolor)
      .attr("stroke-width", 2)
      .attr("fill", "none")
 
@@ -373,7 +373,7 @@ draw = (data) ->
      .attr("y", pad.top)
      .attr("height", h-pad.bottom-pad.top)
      .attr("width", w-pad.left-pad.right)
-     .attr("stroke", "black")
+     .attr("stroke", bgcolor)
      .attr("stroke-width", 2)
      .attr("fill", "none")
 

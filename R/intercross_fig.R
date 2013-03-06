@@ -1,6 +1,6 @@
 source("func.R")
 source("colors.R")
-bgcolor <- rgb(0, 0, 0, maxColorValue=255)
+bgcolor <- rgb(24, 24, 24, maxColorValue=255)
 
 ##############################
 # The intercross
