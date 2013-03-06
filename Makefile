@@ -1,11 +1,14 @@
 mainstuff: js presentation.html figs/manyboxplots.png figs/manyboxplots_oldschool.png
 
-js: js/manyboxplots.js js/lod_and_effect.js
+js: js/manyboxplots.js js/lod_and_effect.js js/cistrans.js
 
 js/manyboxplots.js: coffee/manyboxplots.coffee
 	coffee -bco js coffee
 
 js/lod_and_effect.js: coffee/lod_and_effect.coffee
+	coffee -bco js coffee
+
+js/cistrans.js: coffee/cistrans.coffee
 	coffee -bco js coffee
 
 figs/manyboxplots.png: R/hypo_boxplot.R

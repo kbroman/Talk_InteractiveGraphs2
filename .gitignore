@@ -11,3 +11,6 @@ figs/manyboxplots.png
 figs/manyboxplots_oldschool.png
 figs/manyboxplots_oldschoolB.png
 InteractiveGraphs2.tgz
+data/insulin_eqtl.json
+data/probe_data
+js/cistrans.js

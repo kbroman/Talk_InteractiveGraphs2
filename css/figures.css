@@ -15,35 +15,35 @@ div text {
  font-size: 11pt;
 }
 
-div#lod_and_effect .thickline {
+div.fig .thickline {
   stroke-width: 2;
   fill: none;
 }
 
-div#lod_and_effect text {
+div.fig text {
  font-family: sans-serif;
  font-size: 10pt;
  dominant-baseline: middle;
  text-anchor: middle;
 }
 
-div#lod_and_effect text.alignright {
+div.fig text.alignright {
  text-anchor: end;
 }
 
-div#lod_and_effect .outerBox {
+div.fig .outerBox {
   stroke: black;
   stroke-width: 2;
   fill: none;
   pointer-events: none;
 }
 
-div#lod_and_effect .innerBox {
+div.fig .innerBox {
   fill: rgb(200, 200, 200);
   stroke: none;
   pointer-events: none;
 }
 
-div#lod_and_effect .axis {
+div.fig .axis {
   pointer-events: none;
 }
