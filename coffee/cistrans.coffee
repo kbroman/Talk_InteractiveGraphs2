@@ -55,7 +55,6 @@ draw = (data) ->
   altpink = "#E9CFEC"
   purple = "#8C4374"
   darkred = "crimson"
-  bgcolor = "black"
   labelcolor = "white"
   titlecolor = "Wheat"
   maincolor = "Wheat"
