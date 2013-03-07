@@ -292,8 +292,16 @@ draw = (data) ->
     svg.selectAll(".probe_data").remove()
     d3.select("text#pxgtitle").text("")
     svg.selectAll(".plotPXG").remove()
-    # max lod
-    maxlod = d3.max(probe_data.lod)
+
+    # find marker with maximum LOD score
+    maxlod = -1
+    maxlod_marker = null
+    for m in data.markers
+      lod = probe_data.lod[data.pmark[m].index]
+      if maxlod < lod
+        maxlod = lod
+        maxlod_marker = m
+      
     # y-axis scale
     lodcurve_yScale = d3.scale.linear()
                         .domain([0, maxlod*1.05])
@@ -409,7 +417,7 @@ draw = (data) ->
        .enter()
        .append("circle")
        .attr("class", "probe_data")
-       .attr("id", (td) -> "circle#{td}")
+       .attr("id", (td) -> "marker_#{td}")
        .attr("cx", (td) -> chrLowXScale[data.pmark[td].chr](data.pmark[td].pos_cM))
        .attr("cy", (td) -> lodcurve_yScale(probe_data.lod[data.pmark[td].index]))
        .attr("r", bigRad)
@@ -432,7 +440,7 @@ draw = (data) ->
                   plotPXG td
               else
                   markerClick[lastMarker] = 0
-                  d3.select("#circle#{lastMarker}").attr("opacity", 0).attr("fill",purple).attr("stroke","none")
+                  d3.select("circle#marker_#{lastMarker}").attr("opacity", 0).attr("fill",purple).attr("stroke","none")
                   revPXG td
               lastMarker = td
               markerClick[td] = 1
@@ -656,6 +664,18 @@ draw = (data) ->
                 return pxgXscaleX(sx*2+g-1)+jitter[i]
               pxgXscaleA(sx*3+g-1)+jitter[i])
 
+    # initially select the marker with maximum LOD
+    lastMarker = maxlod_marker
+    markerClick[lastMarker] = 1
+    d3.select("circle#marker_#{lastMarker}").attr("opacity", 1).attr("fill",altpink).attr("stroke",purple)
+    pos = data.pmark[lastMarker].pos_cM
+    chr = data.pmark[lastMarker].chr
+    title = "#{lastMarker} (chr #{chr}, #{onedig(pos)} cM)"
+    d3.select("text#pxgtitle").text(title)
+    plotPXG(lastMarker)
+
+
+
   chrindex = {}
   for c,i in data.chrnames
     chrindex[c] = i
@@ -666,7 +686,7 @@ draw = (data) ->
              .data(data.peaks)
              .enter()
              .append("circle")
-             .attr("class", (d) -> "probe#{d.probe}")
+             .attr("class", (d) -> "probe_#{d.probe}")
              .attr("cx", (d) -> chrXScale[d.chr](d.pos_cM))
              .attr("cy", (d) -> chrYScale[data.probes[d.probe].chr](data.probes[d.probe].pos_cM))
              .attr("r", peakRad)
@@ -674,7 +694,7 @@ draw = (data) ->
              .attr("fill", (d) -> return if(chrindex[d.chr] % 2 is 0) then darkblue else darkgreen)
              .attr("opacity", (d) -> Zscale(d.lod))
              .on "mouseover", (d) ->
-                 d3.selectAll("circle.probe#{d.probe}")
+                 d3.selectAll("circle.probe_#{d.probe}")
                                 .attr("r", bigRad)
                                 .attr("fill", pink)
                                 .attr("stroke", darkblue)
@@ -682,7 +702,7 @@ draw = (data) ->
                                 .attr("opacity", 1)
                  eqtltip.call(this,d)
              .on "mouseout", (d) ->
-                 d3.selectAll("circle.probe#{d.probe}")
+                 d3.selectAll("circle.probe_#{d.probe}")
                                 .attr("r", peakRad)
                                 .attr("fill", (d) -> return if(chrindex[d.chr] % 2 is 0) then darkblue else darkgreen)
                                 .attr("stroke", "none")
@@ -691,6 +711,7 @@ draw = (data) ->
              .on "click", (d) ->
                  d3.json("data/probe_data/probe#{d.probe}.json", draw_probe)
 
+  # initial set of LOD curves at the bottom
   d3.json("data/probe_data/probe517761.json", draw_probe)
 
   # black borders
