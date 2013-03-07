@@ -301,7 +301,7 @@ draw = (data) ->
       if maxlod < lod
         maxlod = lod
         maxlod_marker = m
-      
+
     # y-axis scale
     lodcurve_yScale = d3.scale.linear()
                         .domain([0, maxlod*1.05])
