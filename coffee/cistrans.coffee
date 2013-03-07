@@ -533,6 +533,7 @@ draw = (data) ->
 
     pxgYscale = null
     pxgXaxis = svg.append("g").attr("class", "probe_data").attr("id", "pxg_xaxis")
+    pxgYaxis = svg.append("g").attr("class", "probe_data").attr("class", "plotPXG").attr("id", "pxg_yaxis")
     meanmarks = svg.append("g").attr("id", "pxgmeans").attr("class", "probe_data")
 
     plotPXG = (marker) ->
@@ -540,7 +541,6 @@ draw = (data) ->
                      .domain([d3.min(probe_data.pheno),
                               d3.max(probe_data.pheno)])
                      .range([bottom[2]-pad.inner, top[2]+pad.inner])
-      pxgYaxis = svg.append("g").attr("class", "probe_data").attr("class", "plotPXG").attr("id", "pxg_yaxis")
       pxgticks = pxgYscale.ticks(8)
       pxgYaxis.selectAll("empty")
          .data(pxgticks)
@@ -608,7 +608,7 @@ draw = (data) ->
               g = data.geno[marker][i]
               return pink if g < 0
               darkGray)
-           .attr("stroke", (d,i) ->
+          .attr("stroke", (d,i) ->
                g = data.geno[marker][i]
                return purple if g < 0
                "black")
@@ -663,6 +663,18 @@ draw = (data) ->
               if(data.pmark[marker].chr is "X")
                 return pxgXscaleX(sx*2+g-1)+jitter[i]
               pxgXscaleA(sx*3+g-1)+jitter[i])
+         .attr("fill", (d,i) ->
+              g = data.geno[marker][i]
+              return pink if g < 0
+              darkGray)
+         .attr("stroke", (d,i) ->
+               g = data.geno[marker][i]
+               return purple if g < 0
+               "black")
+         .attr("stroke-width", (d,i) ->
+               g = data.geno[marker][i]
+               return "2" if g < 0
+               "1")
 
     # initially select the marker with maximum LOD
     lastMarker = maxlod_marker
@@ -673,8 +685,6 @@ draw = (data) ->
     title = "#{lastMarker} (chr #{chr}, #{onedig(pos)} cM)"
     d3.select("text#pxgtitle").text(title)
     plotPXG(lastMarker)
-
-
 
   chrindex = {}
   for c,i in data.chrnames
