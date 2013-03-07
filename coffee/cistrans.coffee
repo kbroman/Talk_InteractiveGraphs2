@@ -691,6 +691,7 @@ draw = (data) ->
              .on "click", (d) ->
                  d3.json("data/probe_data/probe#{d.probe}.json", draw_probe)
 
+  d3.json("data/probe_data/probe517761.json", draw_probe)
 
   # black borders
   for j of left
