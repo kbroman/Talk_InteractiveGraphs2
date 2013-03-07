@@ -23,7 +23,7 @@ a {
 }
 
 a.gray {
-  color: #969696;
+  color: #C8C8C8;
 }
 
 
@@ -35,7 +35,7 @@ a.invisiblelink {
   text-decoration: none;
   border-bottom: none;
   opacity: 0;
-  color: #969696;
+  color: #C8C8C8;
 }
 
 a.invisiblelink:hover {
@@ -46,7 +46,7 @@ a.invisiblelink:hover {
 
 
 font.gray {
-  color: #969696;
+  color: #C8C8C8;
 }
 
 font.small {
@@ -67,7 +67,7 @@ ul {
 
 ul.small {
   font-size: 32px;
-  color: #969696;
+  color: #C8C8C8;
 }
 
 ul.small ul {
@@ -81,7 +81,7 @@ li {
 
 ul.tight {
   font-size: 32px;
-  color: #969696;
+  color: #C8C8C8;
 }
 
 /*
@@ -97,7 +97,7 @@ ul.tight ul {
 
 ul.reallytight {
   font-size: 30px;
-  color: #969696;
+  color: #C8C8C8;
 }
 
 ul.reallytight li {
@@ -136,10 +136,10 @@ code.small {
   background-color: #fff;
 }
 .reversecolor text {
-  color: #000;
+  color: #181818;
 }
 .reversecolor h2 {
-  color: #000;
+  color: #181818;
 }
 
 
@@ -216,7 +216,7 @@ h4 {
 }
 
 p.pg {
-  color: rgb(100,100,100);
+  color: rgb(200,200,200);
   position:absolute;
   bottom:3px;
   right: 3px;
@@ -224,7 +224,7 @@ p.pg {
 }
 
 p.codelink {
-  color: rgb(100,100,100);
+  color: rgb(200,200,200);
   position:absolute;
   bottom:3px;
   left: 3px;
@@ -233,7 +233,7 @@ p.codelink {
 }
 
 p.reference {
-  color: rgb(100,100,100);
+  color: rgb(200,200,200);
   position:absolute;
   bottom:3px;
   left: 3px;
@@ -242,7 +242,7 @@ p.reference {
 }
 
 p.Rreference {
-  color: rgb(100,100,100);
+  color: rgb(200,200,200);
   position:absolute;
   bottom:3px;
   right: 3px;
@@ -288,4 +288,18 @@ section:nth-child(odd) aside {
   -ms-transform: rotate(1deg);
   -moz-transform: rotate(1deg);
   -webkit-transform: rotate(1deg);
+}
+
+ul ul {
+  list-style-type: none;  
+}  
+ul ul li:before {  
+  content: "\2013  ";
+}  
+
+ul ul.nodash {
+  list-style-type: none;
+}
+ul ul.nodash li:before {  
+  content: "";
 }
