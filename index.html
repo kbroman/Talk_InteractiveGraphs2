@@ -74,15 +74,18 @@ flashText.on("click", function() {
 
 <p class="codelink"><a href="presentation.html" class="gray">Remove stickies</a>
 
-<aside>I've come to believe that data visualization can be more
-important than precise statistical inference, particularly for
-high-dimensional data.  In these slides, I will show a bit of my
-efforts to develop interactive graphics for expression genetic
-data.<br><br>
+<aside>
+I've come to believe that data visualization can be more important
+than precise statistical inference, particularly for high-dimensional
+data.  In these slides, I will show a bit of my efforts to develop
+interactive graphics for expression genetic data.<br><br>
+
 Click on the link at the bottom-left to remove these
 notes.<br><br>
+
 The flashing &ldquo;interactive&rdquo; is a joke; click
-on it to switch among off/on/flashing.</aside>
+on it to switch among off/on/flashing.
+</aside>
 
 </section>
 
@@ -96,13 +99,14 @@ on it to switch among off/on/flashing.</aside>
 
 <img style="position:fixed;bottom: 0px; left:0px; z-index: -1;" width="1280px" src="figs/inbredmice.jpg" />
 
-<aside>I first need to provide a bit of context.  My research concerns
-genetics, and I focus particularly on mouse genetics.<br><br>
-I think these are <a
-href="http://jaxmice.jax.org/strain/000689.html">SWR mice</a>; the
-photo is from <a
+<aside>
+I first need to provide a bit of context.  My research concerns
+genetics, and I focus particularly on mouse genetics.<br><br> I think
+these are <a href="http://jaxmice.jax.org/strain/000689.html">SWR
+mice</a>; the photo is from <a
 href="http://cals.ncsu.edu/genetics/index.php/people/david-threadgill/">David
-Threadgill</a>.</aside>
+Threadgill</a>.
+</aside>
 
 <p class="pg">2</p></section>
 
@@ -119,10 +123,13 @@ Threadgill</a>.</aside>
 
 <img style="position:fixed;top: 300px; right:120px; z-index: -1;" height="500px" src="figs/vitruvian_mouse.jpg" />
 
-<aside>Mice are not humans, but you can learn a great deal about human
+<aside>
+Mice are not humans, but you can learn a great deal about human
 biology and disease from mice.<br><br>
+
 The figure on the right is from <a
-href="http://www.daviddeen.com">David Deen</a>.</aside>
+href="http://www.daviddeen.com">David Deen</a>.
+</aside>
 
 
 <p class="pg">3</p></section>
@@ -137,11 +144,12 @@ href="http://www.daviddeen.com">David Deen</a>.</aside>
 
 <img style="position:fixed;bottom: 80px; left:50px; z-index: -1;" src="figs/intercross.png" />
 
-<aside>I study the genetics of complex traits in experimental crosses.
-The intercross is the most common type of experimental cross: two
-inbred strains are mated, and then their offspring are mated.  We
-measure genotypes along chromosomes and look for sites in the genome
-for which genotype is associated with some trait.
+<aside>
+I study the genetics of complex traits in experimental crosses.  The
+intercross is the most common type of experimental cross: two inbred
+strains are mated, and then their offspring are mated.  We measure
+genotypes along chromosomes and look for sites in the genome for which
+genotype is associated with some trait.
 </aside>
 
 <p class="pg">4</p></section>
@@ -173,14 +181,17 @@ for which genotype is associated with some trait.
 
 
 
-<aside>My first adventure with big data: 500 mice x 6 arrays x 40k
+<aside>
+My first adventure with big data: 500 mice x 6 arrays x 40k
 measurements.  The goal is to identify genes that contribute to
 obesity-induced diabetes.<br><br>
+
 With 500 arrays of 40k measurements, you would think we would be
 making many more plots than usual.  But, rather, we tend to make <font
 class="highlight">no</font> plots<br><br>
-If you can't look at all 500
-histograms, you tend not to look at any.</aside>
+
+If you can't look at all 500 histograms, you tend not to look at any.
+</aside>
 
 <p class="pg">5</p></section>
 
@@ -234,10 +245,13 @@ the usual rule for depicting &ldquo;outliers.&rdquo; </aside>
 <img src="figs/manyboxplots.png">
 </div>
 
-<aside>I like this better: use lines to connect various
-quantiles. (Here, the 1, 5, 10, 25, 50, 75, 90, 95, and 99%iles.)
-<br><br> Wouldn't it be nice to click on an array and see the
-corresponding histogram?</aside>
+<aside>
+I like this better: use lines to connect various quantiles. (Here, the
+1, 5, 10, 25, 50, 75, 90, 95, and 99%iles.)  <br><br>
+
+Wouldn't it be nice to click on an array and see the corresponding
+histogram?
+</aside>
 
 
 <p class="pg">7</p></section>
@@ -251,9 +265,13 @@ corresponding histogram?</aside>
 <div id="manyboxplots">
 </div>
 
-<aside>Hover over an array above and see the corresponding histogram.
-Click on an array for the histogram to persist; click again to make it
-go away.<br><br>Why aren't all of our graphs interactive?</aside>
+<aside>
+Hover over an array above and see the corresponding histogram.  Click
+on an array for the histogram to persist; click again to make it go
+away.<br><br>
+
+Why aren't all of our graphs interactive?
+</aside>
 
 
 <p class="codelink">
@@ -294,11 +312,16 @@ go away.<br><br>Why aren't all of our graphs interactive?</aside>
 
 </ul>
 
-<aside>The routine use of interactive graphics for exploratory data
-analysis seems a bit out of reach, but surely is possible.
+<aside>
+The routine use of interactive graphics for exploratory data analysis
+seems a bit out of reach, but surely is possible.<br><br>
+
 Incorporating such graphics in reports to our collaborators could be
-really valueable, but perhaps the greatest opportunity is for the
-exploration of large, complex data sets.</aside>
+really valueable.<br><br>
+
+Perhaps the greatest opportunity is for the exploration of large,
+complex data sets.
+</aside>
 
 <p class="pg">9</p></section>
 
@@ -317,13 +340,19 @@ exploration of large, complex data sets.</aside>
        <font class="small">(even worse, obnoxious tables)</font>
 </ul>
 
-<aside>Why aren&rsquo;t statisticians making interactive graphs?  Primarily
-because we&rsquo;ve not learned how.  And it does remain somewhat difficult,
-and there are too many options, most of them incompletely developed.
+<aside>
+Why aren&rsquo;t statisticians making interactive graphs?  Primarily
+because we&rsquo;ve not learned how.  And it does remain somewhat
+difficult.  And there are too many options, most of them incompletely
+developed.<br><br>
+
 But I think the primary reason is that journal articles are static, so
-what incentive is there to develop interactive graphics tools?  And
-most statisticians are still putting little care into visualizations,
-at all.  </aside>
+what incentive is there to develop interactive graphics tools?
+<br><br>
+
+And then most statisticians are still putting little care into
+visualizations, at all.
+</aside>
 
 <p class="pg">10</p></section>
 
@@ -340,8 +369,10 @@ at all.  </aside>
        <font class="small">(even worse, <font class="glow">obnoxious</font> tables)</font>
 </ul>
 
-<aside>I mean it!  Lots of statisticians just create crappy tables,
-because they&rsquo;re lazy and don&rsquo;t care.</aside>
+<aside>
+I mean it!  Lots of statisticians just create crappy tables, because
+they&rsquo;re lazy and don&rsquo;t care.
+</aside>
 
 <p class="pg">10</p></section>
 
@@ -354,8 +385,10 @@ because they&rsquo;re lazy and don&rsquo;t care.</aside>
   class="gray">or <a href="http://d3js.org" class="highlight">flexible</a>?</font>
 
 
-<aside>You have to choose between easy or flexible; you can&rsquo;t have
-  both.  I&rsquo;m going for flexible.</aside>
+<aside>
+You have to choose between easy or flexible; you can&rsquo;t have
+both.  I&rsquo;m going for flexible.
+</aside>
 
 <p class="pg">11</p></section>
 
@@ -371,11 +404,17 @@ because they&rsquo;re lazy and don&rsquo;t care.</aside>
 <div style="position:fixed;bottom:10px;left:10px;">
 <code style="font-size:36px;"><a href="http://bl.ocks.org/1136236">http://bl.ocks.org/1136236</a></code></div>
 
-<aside>I'm focusing on using <a href="http://d3js.org">D3</a>, a javascript library for
-   data visualization.  (D3 stands for &ldquo;data-driven
-   documents.&rdquo;)<br><br> This is one of the images that convinced
-   me that I wanted to learn D3.  The code is surprisingly short and
-   easy to follow.</aside>
+<aside>
+I'm focusing on using <a href="http://d3js.org">D3</a>, a javascript
+library for data visualization.  (D3 stands for &ldquo;data-driven
+documents.&rdquo;)<br><br>
+
+This is one of the images that convinced me that I wanted to learn D3.
+The code is surprisingly short and easy to follow.<br><br>
+
+There are lots of additional examples at the <a
+href="https://github.com/mbostock/d3/wiki/Gallery">D3 gallery</a>.
+</aside>
 
 <p class="pg">12</p>
 </section>
@@ -394,8 +433,25 @@ because they&rsquo;re lazy and don&rsquo;t care.</aside>
   <li><a href="http://caniuse.com">Differences among web browsers</a>
 </ul>
 
-<aside>The hardest part about learning D3 is that there are a whole pile of things that you need to understand simultaneously, and some of them are rather dull.
-There are lots of helpful examples at the <a href="https://github.com/mbostock/d3/wiki/Gallery">D3 gallery</a>.
+<aside>
+The hardest part about learning D3 is that there are a whole pile of
+things that you need to understand simultaneously, and some of them
+are rather dull. <br><br>
+
+You need to learn the D3 library and also to code in JavaScript or
+CoffeeScript (a nicer language that is translated to JavaScript).  And
+the way D3 works is by manipulating elements in an HTML file,
+particularly elements in an SVG object. (SVG stands for
+&ldquo;scaleable vector graphics;&rdquo; it's an html-like way to
+specify an image.)<br><br>
+
+So you need to know HTML and SVG, and then also CSS (&ldquo;cascading
+style sheets&rdquo;), for controlling the style (e.g. color) of
+different HTML or SVG elements.<br><br>
+
+Particularly painful is that the different browsers behave somewhat
+differently, and you need to take that into account if you want your
+visualizations to be useable in any browser.
 </aside>
 
 <p class="pg">13</p></section>
@@ -409,14 +465,17 @@ There are lots of helpful examples at the <a href="https://github.com/mbostock/d
 <div id="lod_and_effect" class="fig"></div>
 
 
-<aside>The curves at the top correspond to a measure of association
-between genotype and insulin level.  LOD scores are
-log<sub>10</sub> likelihood ratios: a transformation of the F
-statistic from ANOVA.<br><br> Click on a chromosome in the top panel to
-see a detailed view in the lower-left panel.  Click on a marker in the
-lower-left panel to see effect estimates and raw data on the
-right.</aside>
+<aside>
+The curves at the top correspond to a measure of association between
+genotype and insulin level.  LOD scores are log<sub>10</sub>
+likelihood ratios: a transformation of the F statistic from
+ANOVA.<br><br>
 
+Click on a chromosome in the top panel to see a detailed view in the
+lower-left panel.  Click on a marker in the lower-left panel to see
+effect estimates and raw data on the right.  Hover over things on the
+right to get some further information.
+</aside>
 
 
 <p class="codelink">
@@ -432,13 +491,27 @@ right.</aside>
 
 <section nopadding>
 
-<h3 style="margin-top:-10px;margin-left:-20px;">Interactive eQTL plot</a>
+<h3 style="margin-top:-10px;margin-left:-20px;">Interactive eQTL plot</h3>
 
 <div id="cistrans" class="fig" style="margin-top:-30px;"></div>
 
 
-<aside>[A lot of explanations needed.]</aside>
+<aside>
+The top-left image shows inferred eQTL (sites in genome where genotype
+is associated with the expression of some gene).  The y-axis
+corresponds to the genomic location of probes on a gene expression
+array.  The x-axis corresponds to marker positions.  Dots indicate
+that the genotypes at a particular marker are associated with the
+expression of a particular probe.<br><br>
 
+Hover over a point in the top-right to see all eQTL for a given probe.
+Click on a point to see the LOD curves across the genome for that
+probe: the association between that probe's expression and genotype at
+each position in the genome.<br><br>
+
+Click on a marker in the lower LOD curve plot to see the corresponding
+phenotype-vs-genotype plot in the top-right.
+</aside>
 
 
 <p class="codelink">
@@ -473,7 +546,9 @@ right.</aside>
   <p><a href="https://github.com/Caged/d3-tip" class="highlight">d3-tip</a> by <a href="http://labratrevenge.com">Justin Palmer</a>
 </div>
 
-<aside>The interactive examples
+<aside>
+
+The interactive examples
 were produced with the <a href="http://d3js.org">D3</a>
 library (written in JavaScript). I wrote the code in CoffeeScript,
 which is translated to JavaScript but is a better-designed language.  <a
