@@ -280,7 +280,7 @@ section aside p:last-child {
 }
 
 section aside:hover {
-  opacity: .5;
+  opacity: 0.35;
 }
 
 section:nth-child(odd) aside {
