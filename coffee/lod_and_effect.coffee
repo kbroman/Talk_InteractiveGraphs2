@@ -89,6 +89,17 @@ draw = (data) ->
     currentMax = d3.max(data.lod[i].lod)
     maxLod = currentMax if maxLod < currentMax
 
+  # for each chromosome, find the marker with maximum LOD score
+  maxLodByChr = {}
+  maxLodByChr_marker = {}
+  for i in data.chr
+    maxLodByChr[i] = 0
+    maxLodByChr[i] = ""
+    for m,j in data.markerindex[i]
+      if lod[i].lod[j] > maxLodByChr[i]
+        maxLodByChr[i] = lod[i].lod[j]
+        maxLodByChr[i] = m
+
   # maximum effect + SE and minimum effect - SE
   effMax = null
   effMin = null
