@@ -3,13 +3,13 @@ mainstuff: js presentation.html figs/manyboxplots.png figs/manyboxplots_oldschoo
 js: js/manyboxplots.js js/lod_and_effect.js js/cistrans.js
 
 js/manyboxplots.js: coffee/manyboxplots.coffee
-	coffee -bco js coffee
+	coffee -co js coffee/manyboxplots.coffee
 
 js/lod_and_effect.js: coffee/lod_and_effect.coffee
-	coffee -bco js coffee
+	coffee -co js coffee/lod_and_effect.coffee
 
 js/cistrans.js: coffee/cistrans.coffee
-	coffee -bco js coffee
+	coffee -co js coffee/cistrans.coffee
 
 figs/manyboxplots.png: R/hypo_boxplot.R
 	cd R;R CMD BATCH hypo_boxplot.R
